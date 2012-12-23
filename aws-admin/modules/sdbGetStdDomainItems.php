@@ -1,6 +1,6 @@
 <?php
 
-	$dmid = 'gmoreglogger';//$_GET["domain"];
+	$dmid = 'reglogger';//$_GET["domain"];
 	$region = 'sdb.ap-northeast-1.amazonaws.com';//$_GET["region"];
 
 	$logtype = null;
