@@ -47,13 +47,24 @@
 		{
 			$tag_name = '';
 			$tag_type = '';
+			$tag_desc = '';
+			$tag_st = '';
+			$tag_ed = '';
 			foreach ($item->instancesSet->item->tagSet->item as $tags)
 			{
 				if($tags->key == 'Name')
 					$tag_name = (string)$tags->value;
 				if($tags->key == 'Type')
 					$tag_type = (string)$tags->value;
+				if($tags->key == 'Desc')
+					$tag_desc = (string)$tags->value;
+				if($tags->key == 'St')
+					$tag_st = (string)$tags->value;
+				if($tags->key == 'Ed')
+					$tag_ed = (string)$tags->value;
+
 			}
+			$autorun = (bool)file_exists('c:/test/'.(string)$item2->instanceId.'.txt');
 			
 			$state = (string)$item2->instanceState->name;
 			if($state=='stopped') $state ='';
@@ -63,13 +74,21 @@
 				,'placement'=>(string)$item2->placement->availabilityZone
 				,'tag_name'=>$tag_name
 				,'tag_type'=>$tag_type
+				,'tag_desc'=>$tag_desc
+				,'tag_st'=>$tag_st
+				,'tag_ed'=>$tag_ed
 				,'privateIp'=>(string)$item2->privateIpAddress
+				,'cpu'=>(string)$item2->instanceType
+				,'autorun'=>(string)!$autorun
 				,'vpcId'=>(string)$item2->vpcId
 				)
 			);
 		}
 
 	}
+	//print_r($instances);
+	// Display
+	//echo json_encode(array('success'=>true,'items'=>$instances));
 	
 	echo json_encode(array('success'=>true,'items'=>$instances));
 	

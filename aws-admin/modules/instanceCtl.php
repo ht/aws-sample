@@ -46,6 +46,21 @@ if($ctltype == 'StartInstance')
 };
 
 
+if($ctltype == 'DisableAutoRun')
+{
+	$pathroot = 'c:/test/';
+	if(file_exists($pathroot.$insid.'.txt')){
+		unlink($pathroot.$insid.'.txt');
+	}
+	else{
+		file_put_contents($pathroot.$insid.'.txt','false');
+	}
+
+	$response = true;
+};
+
+
+
 
 //print_r($response);
 
